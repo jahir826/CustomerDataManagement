@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .hero-section {
+        width: 100%;
+        height: 100vh;
+        background: url('https://images.openai.com/static-rsc-4/cj0RuPgxvXLp6kmUfRR-HALIxLb7dV_SZnFOsoVhq1VHcZNhajG0BJEA9vz78dA-52pH1iQFGV5OnewV8oN1nn7FOheDI9Azw2JuN35zx2BDcznuCa5_ZeboNATKoDbaT7M3VFDZvcv03HoPjWT2AVHUD5UVLWbcd0Ol_HzLGZ-V1X7eQu6AeX7QZ9fF3G6c?purpose=fullsize') no-repeat center center;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+    }
+
+    .overlay {
+        background: rgba(0, 0, 0, 0.5); /* dark overlay */
+        padding: 40px;
+        border-radius: 10px;
+    }
+
+    .btn-custom {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 15px;
+        display: inline-block;
+        
+    }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="hero-section">
+    <div class="overlay">
+        <h1>Customer Data Management System</h1>
+        <p>Manage your customers efficiently and easily</p>
+
+        <a href="/Customer/DisplayCustomers" class="btn-custom">
+            View Customers
+        </a>
+    </div>
+</div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+    .card-box {
+        transition: 0.3s;
+        border-radius: 10px;
+    }
+
+        .card-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+    .icon {
+        font-size: 40px;
+        color: #0d6efd;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row text-center">
+
+        <!-- Add Customer -->
+        <div class="col-md-4 mb-4">
+            <div class="card card-box p-4 shadow">
+                <i class="fa-solid fa-user-plus icon"></i>
+                <h4>Add Customer</h4>
+                <p>Create and store new customer details</p>
+                <a href="/Customer/AddCustomer" class="btn btn-primary">Add</a>
+            </div>
+        </div>
+
+        <!-- View Customers -->
+        <div class="col-md-4 mb-4">
+            <div class="card card-box p-4 shadow">
+                <i class="fa-solid fa-users icon"></i>
+                <h4>View Customers</h4>
+                <p>See all customer records easily</p>
+                <a href="/Customer/DisplayCustomers" class="btn btn-success">View</a>
+            </div>
+        </div>
+
+        <!-- Reports -->
+        <div class="col-md-4 mb-4">
+            <div class="card card-box p-4 shadow">
+                <i class="fa-solid fa-chart-line icon"></i>
+                <h4>Reports</h4>
+                <p>Analyze customer data and insights</p>
+                <a href="#" class="btn btn-warning">Reports</a>
+            </div>
+        </div>
+
+    </div>
+</div>

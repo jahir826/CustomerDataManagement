@@ -1,0 +1,177 @@
+﻿@* @model CustomerDataManagement.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    var returnUrl = @Context.Request.Query["ReturnUrl"];
+}
+<h1>Login With</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <h3>NIT Account</h3>
+        <hr />
+        <form asp-action="Login" asp-route-ReturnUrl="@returnUrl">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RememberMe" />
+                    @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="reset" value="Reset" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                New user? <a asp-action="Register">Click</a> to register?
+                <br />
+                Forgot password? - <a asp-action="ForgotPassword">Click</a> to reset.
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Google or Facebook</h3>
+        <hr />
+        <form asp-action="ExternalLogin" asp-route-returnUrl="@returnUrl">
+            <input type="submit" name="Provider" value="Google" class="btn btn-primary" />
+            <input type="submit" name="Provider" value="Facebook" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+@model CustomerDataManagement.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    var returnUrl = Context.Request.Query["ReturnUrl"];
+}
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        font-family: Arial;
+    }
+
+    .login-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-box {
+        width: 400px;
+        padding: 35px;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        color: white;
+    }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    .form-control {
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: none;
+        padding: 10px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        margin-top: 10px;
+        background: #00c6ff;
+        border: none;
+        border-radius: 8px;
+    }
+
+        .btn-primary:hover {
+            background: #0072ff;
+        }
+
+    .external-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>
+
+<div class="login-container">
+
+    <div class="login-box">
+
+        <h2>Log In</h2>
+
+        <form asp-action="Login" asp-route-ReturnUrl="@returnUrl">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="Name" class="form-control" placeholder="Username" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+            <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <div class="form-group" style="margin-top:10px;">
+                <label>
+                    <input asp-for="RememberMe" /> Remember Me
+                </label>
+            </div>
+
+            <input type="submit" value="Login" class="btn btn-primary" />
+            <input type="reset" value="Reset" class="btn btn-primary" />
+
+        </form>
+
+        <hr />
+
+        <div class="text-center">
+            <p>New user? <a asp-action="Register">Register</a></p>
+            <p>Forgot password? <a asp-action="ForgotPassword">Reset</a></p>
+        </div>
+
+        <hr />
+
+        <form asp-action="ExternalLogin" asp-route-returnUrl="@returnUrl">
+
+            <input type="submit" name="Provider" value="Google" class="btn btn-primary external-btn" />
+            <input type="submit" name="Provider" value="Facebook" class="btn btn-primary external-btn" />
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

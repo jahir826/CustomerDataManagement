@@ -1,0 +1,48 @@
+﻿using CustomerDataManagement.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CustomerDataManagement.Controllers
+{
+    public class CustomerController : Controller
+    {
+        // CustomerDal obj = new CustomerDal();
+        private readonly ICustomerDal obj;
+        public CustomerController(ICustomerDal obj)
+        {
+            this.obj = obj;
+        }
+        public ViewResult DisplayCustomers()
+        {
+            return View(obj.Customers_Select());
+        }
+        public ViewResult DisplayCustomer(int Custid)
+        {
+            return View(obj.Customer_Select(Custid));
+        } 
+
+        public ViewResult AddCustomer()
+        {
+            return View();
+        }
+        [HttpPost]
+        public RedirectToActionResult AddCustomer(Customer customer)
+        {
+            obj.Customer_Insert(customer);
+            return RedirectToAction("DisplayCustomers");
+        }
+        public ViewResult EditCustomer(int Custid)
+        {
+            return View(obj.Customer_Select(Custid));
+        }
+        public RedirectToActionResult UpdateCustomer(Customer customer)
+        {
+            obj.Customer_Update(customer);
+            return RedirectToAction("DisplayCustomers");
+        }
+        public RedirectToActionResult DeleteCustomer(int Custid)
+        {
+            obj.Customer_Delete(Custid);
+            return RedirectToAction("DisplayCustomers");
+        }
+    }
+}
