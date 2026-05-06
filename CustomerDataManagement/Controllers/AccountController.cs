@@ -34,21 +34,9 @@ namespace CustomerDataManagement.Controllers
                     PhoneNumber = userModel.Mobile
                 };
                 var result = await userManager.CreateAsync(identityUser, userModel.Password);
-                //if (result.Succeeded)
-                //{
-                //    var token = await userManager.GenerateEmailConfirmationTokenAsync(identityUser);
-                //    var confirmationUrlLink = Url.Action("ConfirmEmail", "Account", new { UserId = identityUser.Id, Token = token }, Request.Scheme);
-                //    SendMail(identityUser, confirmationUrlLink, "Email Confirmation Link");
-                //    return RedirectToAction("DisplayMessages");
-
-                //    TempData["Title"] = "Email Confirmation Link";
-                //    TempData["Message"]= "A confirm email link has beensent to you register mail,click on it to confirm.";
-                //    return View("DisplayMessages");
-
-                //}
+                
                 if (result.Succeeded)
                 {
-                    //Performing a Sign-In into the appliction 
                     await signInManager.SignInAsync(identityUser, false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -56,7 +44,6 @@ namespace CustomerDataManagement.Controllers
                 {
                     foreach (var Error in result.Errors)
                     {
-                        //Displaying error details to the user 
                         ModelState.AddModelError("", Error.Description);
                     }
                 }
@@ -103,45 +90,7 @@ namespace CustomerDataManagement.Controllers
             return RedirectToAction("Login");
         }
         #endregion
-        //#region SendMail
-        //public void SendMail(IdentityUser identityuser, string requestLink, string subject)
-        //{
-        //    StringBuilder mailBody = new StringBuilder();
-        //    mailBody.Append("Hello " + identityuser.UserName + "<br/><br/>");
-        //    if (subject == "Email Confirmation Link")
-        //    {
-        //        mailBody.Append("Click on the link below to confirm your email:");
-        //    }
-        //    else
-        //    {
-        //        mailBody.Append("Click on the link below to reset your password:");
-        //    }
-        //    mailBody.Append("<br/>");
-        //    mailBody.Append(requestLink);
-        //    mailBody.Append("<br/><br/>");
-        //    mailBody.Append("Regards");
-        //    mailBody.Append("<br/><br/>");
-        //    mailBody.Append("Customer Suppoort.");
-
-        //    BodyBuilder bodyBuilder = new BodyBuilder();
-        //    bodyBuilder.HtmlBody = mailBody.ToString();
-
-        //    MailboxAddress fromAddress = new MailboxAddress("Customer Support", "jahirdev835@gmail.com");
-        //    MailboxAddress toAddress = new MailboxAddress(identityuser.UserName, identityuser.Email);
-
-        //    MimeMessage mailMessage = new MimeMessage();
-        //    mailMessage.From.Add(fromAddress);
-        //    mailMessage.To.Add(toAddress);
-        //    mailMessage.Subject = subject;
-        //    mailMessage.Body = bodyBuilder.ToMessageBody();
-
-        //    SmtpClient smtpClient = new SmtpClient();
-        //    smtpClient.Connect("smtp.gmail.com", 465, true);
-        //    smtpClient.Authenticate("jahirdev835@gmail.com", "nhtg uovg corm gcmb");
-        //    smtpClient.Send(mailMessage);
-        //    //nhtg uovg corm gcmb
-        //}
-        //#endregion
+        
         #region Confirm Email
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
