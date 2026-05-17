@@ -59,7 +59,7 @@
         <h1>Customer Data Management System</h1>
         <p>Manage your customers efficiently and easily</p>
 
-        <a href="/Customer/DisplayCustomers" class="btn-custom">
+        <a asp-controller="Customer" asp-action="DisplayCustomers" class="btn-custom">
             View Customers
         </a>
     </div>
@@ -74,7 +74,7 @@
                 <i class="fa-solid fa-user-plus icon"></i>
                 <h4>Add Customer</h4>
                 <p>Create and store new customer details</p>
-                <a href="/Customer/AddCustomer" class="btn btn-primary">Add</a>
+                <a asp-controller="Customer" asp-action="DisplayCustomers" class="btn btn-primary">Add</a>
             </div>
         </div>
 
@@ -84,9 +84,9 @@
                 <i class="fa-solid fa-users icon"></i>
                 <h4>View Customers</h4>
                 <p>See all customer records easily</p>
-                <a href="/Customer/DisplayCustomers" class="btn btn-success">View</a>
+                <a asp-controller="Customer" asp-action="DisplayCustomers"  class="btn btn-success">View</a>
             </div>
-        </div>
+        </div> 
 
         <!-- Reports -->
         <div class="col-md-4 mb-4">
