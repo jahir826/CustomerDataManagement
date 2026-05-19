@@ -18,6 +18,7 @@
             if (customer == null)
             {
                 throw new Exception("No customer exist's with given Custid.");
+
             }
             return customer;
         }
