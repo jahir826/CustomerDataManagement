@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MVCDHProject.styles.css" asp-append-version="true" />
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -21,16 +21,43 @@
                 </button>
 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <a class="navbar-brand d-flex align-items-center"
+                       asp-controller="Home"
+                       asp-action="Index">
+
+                        <div class="bg-primary rounded-circle d-flex justify-content-center align-items-center"
+                             style="width:37px;height:37px;">
+                            <i class="fas fa-users"></i>
+                        </div>
+
+                        <div class="ms-3">
+                            <h4 class="mb-0 fw-bold">CDMS</h4>
+
+                        </div>
+
+                    </a>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-house me-1"></i> Home
+                            </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">About</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">
+                                <i class="fas fa-circle-info me-1"></i> About Us
+                            </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Customer" asp-action="DisplayCustomers">
-                                Customers Details
+                            <a class="nav-link" asp-controller="Home" asp-action="Contact">
+                                <i class="fas fa-envelope me-1"></i> Contact Us
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Customer" asp-action="DisplayCustomers">
+                                <i class="fas fa-users me-1"></i> Customers Details
                             </a>
                         </li>
                     </ul>
@@ -39,19 +66,20 @@
                         @if (signInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link">@User.Identity.Name</a>
+                                <a class="nav-link">  <i class="fas fa-user-circle me-1"></i>@User.Identity.Name</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                                <a class="nav-link" asp-controller="Account" asp-action="Logout">  <i class="fas fa-right-from-bracket me-1"></i>Logout</a>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                            <li class="nav-item" class="fas fa-user-plus me-1">
+                                <a class="nav-link" asp-controller="Account" asp-action="Register"> <i class="fas fa-user-plus me-1"></i>Register</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                          
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">  <i class="fas fa-right-to-bracket me-1"></i> Login</a>
                             </li>
                         }
                     </ul>
@@ -73,6 +101,9 @@
                 <div class="col-md-4 mb-3">
                     <h5>Customer System</h5>
                     <p>Manage your customer data efficiently with our system.</p>
+                    <p>
+                        Developed by Shekh Jahir | ASP.NET Core MVC | SQL Server
+                    </p>
                 </div>
 
                 <!-- Links -->
@@ -92,10 +123,6 @@
                     <p>Phone: +91 8261080635</p>
                 </div>
 
-            </div>
-
-            <div class="footer-bottom">
-                <p> Customer Data Management System | All Rights Reserved</p>
             </div>
         </div>
     </footer>
